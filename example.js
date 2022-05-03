@@ -34,6 +34,7 @@ class App {
 		// See https://tools.developer.homey.app/tools/devices for your device capabilities. 
 		this.socket.on(`Hem/Philips/alarm_motion`, (value) => {
 			// Turn a light on/off. Same format.
+			// In this case a lamp in zone "Kontoret" named "Kontoret D".
 			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value);
 		});				
 
