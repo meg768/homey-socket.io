@@ -1,38 +1,41 @@
 #!/usr/bin/env node
+
 const {io} = require("socket.io-client");
 
 class App {
 
 	constructor() {
-//		this.socket = io("http://192.168.86.37:3987");
+		// Connect to Homey socket. It is your Homey name plus your Athom Cloud-ID.
+		// You can find it under system settings in the Homey App.
 		this.socket = io("http://homey-5d9c7ec99091850c3d2a43cc:3987");
 		
 		this.socket.on("connect", () => {
+			// Successful socket.io connection
 			console.log(`Connected to socket ID ${this.socket.id}.`);		
 		});
 
 		this.socket.on('connected', (payload) => {
+			// Now connected to Homey. The payload is all zones and devices
 			console.log(`Connected to Homey.`);		
-			
+
+			// Payload contains all Homey devices and zones
 			let {devices, zones} = payload;
+
 			this.devices = devices;
 			this.zones = zones;
 
 			console.log(JSON.stringify(this.devices, null, '  '));
 		});
 
+		// Listen to a sensor. The format is "zone-name/device-name/capability"
 		this.socket.on(`Hem/Philips/alarm_motion`, (value) => {
+			// Turn a light on/off. Same format.
 			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value);
 		});				
-
-	}
-
-	run() {
 
 	}
 }
 
 const app = new App();
-app.run();
 
 
