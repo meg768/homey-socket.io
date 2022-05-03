@@ -6,7 +6,8 @@ class App {
 
 	constructor() {
 		// Connect to Homey socket. It is your Homey name plus your Athom Cloud-ID.
-		// You can find it under system settings in the Homey App.
+		// You can find it under system settings in the Homey App. 
+		// The port is currently fixed to 3987.
 		this.socket = io("http://homey-5d9c7ec99091850c3d2a43cc:3987");
 		
 		this.socket.on("connect", () => {
@@ -24,10 +25,13 @@ class App {
 			this.devices = devices;
 			this.zones = zones;
 
+			// Show all devices for debugging purposes.
 			console.log(JSON.stringify(this.devices, null, '  '));
 		});
 
 		// Listen to a sensor. The format is "zone-name/device-name/capability"
+		// This example listens to a motion sensor named "Philips" in a zone named "Hem".
+		// See https://tools.developer.homey.app/tools/devices for your device capabilities. 
 		this.socket.on(`Hem/Philips/alarm_motion`, (value) => {
 			// Turn a light on/off. Same format.
 			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value);
