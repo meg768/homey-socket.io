@@ -1,7 +1,8 @@
 # Homey Socket IO
 Adds support for socket.io to Homey.
 
-This app for Homey exposes all devices to socket.io.
+This app for Homey exposes all devices to socket.io. Below is
+a small example how to listen to a sensor and turning on/off a lamp.
 
 ````javascript
 
