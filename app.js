@@ -117,11 +117,9 @@ class MyApp extends Homey.App {
 					let deviceCapabilityName = `${device.zoneName}/${device.name}/${capabilityID}`;
 
 					let instance = device.makeCapabilityInstance(capabilityID, async (value) => {
-						this.debug(`Emitting ${deviceCapabilityID}: ${JSON.stringify(value)}`);
-						this.io.emit(deviceCapabilityID, value);
-
 						this.debug(`Emitting ${deviceCapabilityName}: ${JSON.stringify(value)}`);
 						this.io.emit(deviceCapabilityName, value);
+						this.io.emit(deviceCapabilityID, value);
 					});
 
 					this.instances[deviceCapabilityID] = instance;
@@ -141,22 +139,17 @@ class MyApp extends Homey.App {
 				for (let capabilityID in device.capabilitiesObj) {
 					let deviceCapabilityID = this.getDeviceCapabilityID(deviceID, capabilityID);
 					let deviceCapabilityName = this.getDeviceCapabilityName(deviceID, capabilityID);
-					this.debug(`Registering event ${deviceCapabilityID}`);
+					this.debug(`Registering event ${deviceCapabilityName}`);
 
-					client.on(deviceCapabilityID, async (value, callback) => {
-						await this.deviceCapabilitySetter(deviceID, capabilityID, value)();
-
-						if (typeof callback == 'function') {
-							callback();
-						}
-					});
-
-					client.on(deviceCapabilityName, async (value, callback) => {
-						await this.deviceCapabilitySetter(deviceID, capabilityID, value)();
-
-						if (typeof callback == 'function') {
-							callback();
-						}
+					[deviceCapabilityID, deviceCapabilityName].forEach((event) => {
+						client.on(event, async (value, callback) => {
+							await this.deviceCapabilitySetter(deviceID, capabilityID, value)();
+	
+							if (typeof callback == 'function') {
+								callback();
+							}
+						});
+	
 					});
 
 				}

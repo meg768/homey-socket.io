@@ -1,3 +1,3 @@
 # Socket IO
 
-Adds support for socket.io
+Adds support for socket.io to Homey
