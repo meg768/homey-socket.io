@@ -4,15 +4,15 @@
   "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
-  "brandColor": "#FF0000",
+  "brandColor": "#e28743",
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Socket.io"
+    "en": "Socket.IO"
   },
   "description": {
-    "en": "Adds support for socket.io"
+    "en": "Adds support for Socket.IO"
   },
   "category": [
     "tools"

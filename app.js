@@ -139,7 +139,6 @@ class MyApp extends Homey.App {
 				for (let capabilityID in device.capabilitiesObj) {
 					let deviceCapabilityID = this.getDeviceCapabilityID(deviceID, capabilityID);
 					let deviceCapabilityName = this.getDeviceCapabilityName(deviceID, capabilityID);
-					this.debug(`Registering event ${deviceCapabilityName}`);
 
 					[deviceCapabilityID, deviceCapabilityName].forEach((event) => {
 						client.on(event, async (value, callback) => {

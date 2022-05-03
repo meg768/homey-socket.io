@@ -29,15 +29,14 @@ class App {
 			console.log(JSON.stringify(this.devices, null, '  '));
 		});
 
-		// Listen to a sensor. The format is "zone-name/device-name/capability"
+		// Listen to a sensor. The format is "zone-name/device-name/capabilityID"
 		// This example listens to a motion sensor named "Philips" in a zone named "Hem".
 		// See https://tools.developer.homey.app/tools/devices for your device capabilities. 
 		this.socket.on(`Hem/Philips/alarm_motion`, (value) => {
 			// Turn a light on/off. Same format.
 			// In this case a lamp in zone "Kontoret" named "Kontoret D".
 			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value);
-		});				
-
+		});
 	}
 }
 
