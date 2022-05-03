@@ -1,0 +1,17 @@
+{
+  "name": "se.egelberg.socket-io",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {},
+  "devDependencies": {
+    "@tsconfig/node12": "^1.0.9",
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.1",
+    "@types/node": "^17.0.24"
+  },
+  "dependencies": {
+    "athom-api": "^3.7.3",
+    "homey-api": "^1.5.26",
+    "socket.io": "^4.4.1",
+    "socket.io-client": "^4.4.1"
+  }
+}
