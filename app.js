@@ -119,6 +119,7 @@ class MyApp extends Homey.App {
 					let instance = device.makeCapabilityInstance(capabilityID, async (value) => {
 						this.debug(`Emitting ${deviceCapabilityName}: ${JSON.stringify(value)}`);
 						this.io.emit(deviceCapabilityName, value);
+						this.debug(`Emitting ${deviceCapabilityID}: ${JSON.stringify(value)}`);
 						this.io.emit(deviceCapabilityID, value);
 					});
 

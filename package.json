@@ -4,7 +4,9 @@
   "main": "app.js",
   "scripts": {
 	"git-commit": "git add -A && git push && git commit -m '-' && git push",
-    "homey-publish": "npm version patch && npm publish"	  
+    "npm-version-patch": "npm version patch",	  
+    "homey-app-run": "homey app run", 
+    "homey-app-publish": "homey app publish" 
   },
   "devDependencies": {
     "@tsconfig/node12": "^1.0.9",
