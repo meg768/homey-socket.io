@@ -27,5 +27,7 @@
   "author": {
     "name": "Magnus Egelberg",
     "email": "magnus@egelberg.se"
-  }
+  },
+  "source": "https://github.com/meg768/homey-socket.io"
+
 }
