@@ -6,6 +6,7 @@
 	"git-commit": "git add -A && git push && git commit -m '-' && git push",
     "npm-version-patch": "npm version patch",	  
     "homey-app-run": "homey app run", 
+    "homey-app-install": "homey app install", 
     "homey-app-publish": "homey app publish" 
   },
   "devDependencies": {
