@@ -2,7 +2,7 @@
 Adds support for Socket.IO to Homey.
 
 This app for Homey exposes all devices to Socket.IO. Below is
-a small example how to listen to a sensor and turning on/off a lamp.
+a small example how to listen to a sensor and turning on/off a lamp using Node.
 
 ````javascript
 

@@ -2,7 +2,10 @@
   "name": "se.egelberg.socket-io",
   "version": "1.0.3",
   "main": "app.js",
-  "scripts": {},
+  "scripts": {
+	"git-commit": "git add -A && git push && git commit -m '-' && git push",
+    "homey-publish": "npm version patch && npm publish"	  
+  },
   "devDependencies": {
     "@tsconfig/node12": "^1.0.9",
     "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.1",
