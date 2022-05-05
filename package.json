@@ -4,6 +4,7 @@
   "main": "app.js",
   "scripts": {
 	"git-commit": "git add -A && git push && git commit -m '-' && git push",
+	"goto-github": "open https://github.com/meg768/homey-socket.io",
     "npm-version-patch": "npm version patch",	  
     "homey-app-run": "homey app run", 
     "homey-app-install": "homey app install", 
