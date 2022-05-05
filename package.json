@@ -1,6 +1,6 @@
 {
   "name": "se.egelberg.socket-io",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "app.js",
   "scripts": {
 	"git-commit": "git add -A && git push && git commit -m '-' && git push",
