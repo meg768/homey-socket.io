@@ -35,8 +35,11 @@ class App {
 		this.socket.on(`Hem/Philips/alarm_motion`, (value) => {
 			// Turn a light on/off. Same format.
 			// In this case a lamp in zone "Kontoret" named "Kontoret D".
-			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value, () => {
-				console.log(`The lamp is now ${value ? "OFF" : "ON"}.`);
+			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value, (error) => {
+				if (!error)
+					console.log(`The lamp is now ${value ? "OFF" : "ON"}.`);
+				else
+					console.log(error);
 			});
 		});
 	}

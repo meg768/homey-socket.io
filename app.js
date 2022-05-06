@@ -118,10 +118,17 @@ class MyApp extends Homey.App {
 
 					[deviceCapabilityID, deviceCapabilityName].forEach((event) => {
 						client.on(event, async (value, callback) => {
-							await this.deviceCapabilitySetter(deviceID, capabilityID, value)();
-	
-							if (typeof callback == 'function') {
+
+							if (typeof callback != 'function') {
+								callback = () => {};
+							}								
+
+							try {
+								await this.deviceCapabilitySetter(deviceID, capabilityID, value)();
 								callback();
+							}
+							catch(error) {
+								callback(error.message);
 							}
 						});
 	
