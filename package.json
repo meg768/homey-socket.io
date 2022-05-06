@@ -1,6 +1,6 @@
 {
   "name": "se.egelberg.socket-io",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "app.js",
   "scripts": {
 	"git-commit": "git add -A && git push && git commit -m '-' && git push",
@@ -16,7 +16,6 @@
     "@types/node": "^17.0.24"
   },
   "dependencies": {
-    "athom-api": "^3.7.3",
     "homey-api": "^1.5.26",
     "socket.io": "^4.4.1",
     "socket.io-client": "^4.4.1"

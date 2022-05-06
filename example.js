@@ -15,7 +15,7 @@ class App {
 			console.log(`Connected to socket ID ${this.socket.id}.`);		
 		});
 
-		this.socket.on('connected', (payload) => {
+		this.socket.on('homey', (payload) => {
 			// Now connected to Homey. The payload is all zones and devices
 			console.log(`Connected to Homey.`);		
 

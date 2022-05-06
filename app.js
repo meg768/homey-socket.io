@@ -2,8 +2,7 @@
 
 const Homey = require('homey');
 const { HomeyAPI } = require('athom-api');
-
-
+const { HomeyAPIApp } = require('homey-api');
 
 class MyApp extends Homey.App {
 
@@ -31,23 +30,11 @@ class MyApp extends Homey.App {
 
 	async getApi() {
 
-		/*
 		if (!this.api) {
-			const { HomeyAPIApp } = require('homey-api');
-			const api = new HomeyAPIApp({
-				homey: this.homey,
-			  });
-		  
-			  this.api = api;
+			this.api = new HomeyAPIApp({homey: this.homey});
 		}
-        return this.api;
-		*/
 
-        if (!this.api) {
-            this.api = HomeyAPI.forCurrentHomey(this.homey);
-        }
         return this.api;
-
 	}
 
 
@@ -71,23 +58,20 @@ class MyApp extends Homey.App {
 				let instance = this.instances[deviceCapabilityID];
 
 				if (instance) {
-					let deviceName = `${instance.device.zoneName}/${instance.device.name}`;
-
-					if (instance.setable) {
-						try {
-							delete this.instances[deviceCapabilityID];
-							this.debug(`Setting ${deviceCapabilityName} to ${value}`);
-							await instance.setValue(value);
-		
-						}
-						catch(error) {
-							this.log(`Could not set ${deviceCapabilityName} to ${value}. ${error.message}`);
-						}
+					try {
+						delete this.instances[deviceCapabilityID];
+						this.debug(`Setting ${deviceCapabilityName} to ${value}`);
+						await instance.setValue(value);
 	
-						this.instances[deviceCapabilityID] = instance;
 					}
+					catch(error) {
+						this.log(`Could not set ${deviceCapabilityName} to ${value}. ${error.message}`);
+					}
+
+					this.instances[deviceCapabilityID] = instance;
 				}
 				else {
+					this.log(`Instance ${deviceCapabilityID} not found.`);
 
 				}
 			}
@@ -101,14 +85,10 @@ class MyApp extends Homey.App {
 
 	async load() {
 
-		this.api.devices.setMaxListeners(9999); // HACK
-		
 		for (let deviceID in this.devices) {
 
 			let device = this.devices[deviceID];
 			let capabilities = device.capabilitiesObj;
-
-			device.setMaxListeners(100);
 
 			for (let capabilityID in capabilities) {
 
@@ -161,6 +141,7 @@ class MyApp extends Homey.App {
 			});
 
 			client.emit('connected', {devices:this.devices, zones:this.zones});
+			client.emit('homey', {devices:this.devices, zones:this.zones});
 
 		});
 
