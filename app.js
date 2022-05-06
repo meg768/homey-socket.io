@@ -1,7 +1,6 @@
 'use strict';
 
 const Homey = require('homey');
-const { HomeyAPIApp } = require('homey-api');
 
 class MyApp extends Homey.App {
 
@@ -24,6 +23,7 @@ class MyApp extends Homey.App {
 	}
 
 	async getApi() {
+		const { HomeyAPIApp } = require('homey-api');
 
 		if (!this.api) {
 			this.api = new HomeyAPIApp({homey: this.homey});
@@ -141,7 +141,7 @@ class MyApp extends Homey.App {
 		});
 
 		this.io.listen(3987);
-		this.log('Loading finished...');
+		this.debug('Loading finished...');
 
 
 	}
