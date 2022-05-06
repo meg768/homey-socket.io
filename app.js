@@ -1,7 +1,6 @@
 'use strict';
 
 const Homey = require('homey');
-const { HomeyAPI } = require('athom-api');
 const { HomeyAPIApp } = require('homey-api');
 
 class MyApp extends Homey.App {
@@ -9,22 +8,18 @@ class MyApp extends Homey.App {
 	async onInit() {
 		this.instances = {};
 		this.api = await this.getApi();
+		this.debug = this.log;
 
-		this.log(`Fetching devices...`);
+		this.debug(`Fetching devices...`);
 		this.devices = await this.api.devices.getDevices();
 
-		this.log(`Fetching zones...`);
+		this.debug(`Fetching zones...`);
 		this.zones = await this.api.zones.getZones();
 
 		this.name = await this.api.system.getSystemName();
-
 		this.io = require('socket.io')();
 
-		this.debug = this.log;
-
 		await this.load();
-
-
 
 	}
 
