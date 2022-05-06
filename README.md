@@ -7,8 +7,6 @@ a small example how to listen to a sensor and turning on/off a lamp using Node.
 
 ````javascript
 
-#!/usr/bin/env node
-
 const {io} = require("socket.io-client");
 
 class App {
@@ -44,12 +42,13 @@ class App {
 		this.socket.on(`Hem/Philips/alarm_motion`, (value) => {
 			// Turn a light on/off. Same format.
 			// In this case a lamp in zone "Kontoret" named "Kontoret D".
-			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value);
+			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value, () => {
+				console.log(`The lamp is now ${value ? "OFF" : "ON"}.`);
+			});
 		});
 	}
 }
 
 const app = new App();
-
 
 ````
