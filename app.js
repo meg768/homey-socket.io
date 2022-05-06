@@ -89,7 +89,7 @@ class MyApp extends Homey.App {
 
 				if (capabilities.hasOwnProperty(capabilityID)) {
 					let deviceCapabilityID = this.getDeviceCapabilityID(deviceID, capabilityID);
-					let deviceCapabilityName = `${device.zoneName}/${device.name}/${capabilityID}`;
+					let deviceCapabilityName = this.getDeviceCapabilityName(deviceID, capabilityID);
 
 					let instance = device.makeCapabilityInstance(capabilityID, async (value) => {
 						this.debug(`Emitting ${deviceCapabilityName}: ${JSON.stringify(value)}`);
