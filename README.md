@@ -1,10 +1,13 @@
 # Homey Socket IO
 Adds support for Socket.IO to Homey.
 
+## Example
 This app for Homey exposes all devices to Socket.IO. Below is
 a small example how to listen to a sensor and turning on/off a lamp using Node.
 
 ````javascript
+
+#!/usr/bin/env node
 
 const {io} = require("socket.io-client");
 
@@ -35,18 +38,18 @@ class App {
 			console.log(JSON.stringify(this.devices, null, '  '));
 		});
 
-		// Listen to a sensor. The format is "zone-name/device-name/capability"
+		// Listen to a sensor. The format is "zone-name/device-name/capabilityID"
 		// This example listens to a motion sensor named "Philips" in a zone named "Hem".
 		// See https://tools.developer.homey.app/tools/devices for your device capabilities. 
 		this.socket.on(`Hem/Philips/alarm_motion`, (value) => {
 			// Turn a light on/off. Same format.
 			// In this case a lamp in zone "Kontoret" named "Kontoret D".
 			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value);
-		});				
-
+		});
 	}
 }
 
 const app = new App();
+
 
 ````
