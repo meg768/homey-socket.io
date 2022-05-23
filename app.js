@@ -15,8 +15,15 @@ class MyApp extends Homey.App {
 		this.debug(`Fetching zones...`);
 		this.zones = await this.api.zones.getZones();
 
+		this.debug(`Fetching weather...`);
+		this.weather = await this.api.weather.getWeather();
+		this.debug(this.weather);
+
 		this.name = await this.api.system.getSystemName();
 		this.io = require('socket.io')();
+
+		this.debug(`Fetching system...`);
+		this.debug(await this.api.system.getInfo());
 
 		await this.load();
 

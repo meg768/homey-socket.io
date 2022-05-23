@@ -3,12 +3,12 @@
   "version": "1.0.5",
   "main": "app.js",
   "scripts": {
-	"git-commit": "git add -A && git push && git commit -m '-' && git push",
-	"goto-github": "open https://github.com/meg768/homey-socket.io",
-    "npm-version-patch": "npm version patch",	  
-    "homey-app-run": "homey app run", 
-    "homey-app-install": "homey app install", 
-    "homey-app-publish": "homey app publish" 
+    "git-commit": "git add -A && git push && git commit -m '-' && git push",
+    "goto-github": "open https://github.com/meg768/homey-socket.io",
+    "npm-version-patch": "npm version patch",
+    "homey-app-run": "homey app run",
+    "homey-app-install": "homey app install",
+    "homey-app-publish": "homey app publish"
   },
   "devDependencies": {
     "@tsconfig/node12": "^1.0.9",
