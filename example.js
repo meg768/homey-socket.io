@@ -25,8 +25,6 @@ class App {
 			this.devices = devices;
 			this.zones = zones;
 
-			// Show all devices for debugging purposes.
-			console.log(JSON.stringify(this.devices, null, '  '));
 		});
 
 		// Listen to a sensor. The format is "zone-name/device-name/capabilityID"
@@ -34,8 +32,8 @@ class App {
 		// See https://tools.developer.homey.app/tools/devices for your device capabilities. 
 		this.socket.on(`Hem/Philips/alarm_motion`, (value) => {
 			// Turn a light on/off. Same format.
-			// In this case a lamp in zone "Kontoret" named "Kontoret D".
-			this.socket.emit(`Kontoret/Kontoret D/onoff`, !value, (error) => {
+			// In this case a lamp in zone "Kontoret" named "Kontoret C".
+			this.socket.emit(`Kontoret/Kontoret C/onoff`, !value, (error) => {
 				if (!error)
 					console.log(`The lamp is now ${value ? "OFF" : "ON"}.`);
 				else
