@@ -8,7 +8,7 @@ class App {
 		// Connect to Homey socket. It is your Homey name plus your Athom Cloud-ID.
 		// You can find it under system settings in the Homey App. 
 		// The port is currently fixed to 3987.
-		this.socket = io("http://homey-5d9c7ec99091850c3d2a43cc:3987");
+		this.socket = io("http://your-home-id:3987");
 		
 		this.socket.on("connect", () => {
 			// Successful socket.io connection
