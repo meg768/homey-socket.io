@@ -1,5 +1,5 @@
 {
-  "name": "se.egelberg.socket-io",
+  "name": "homey-socket.io",
   "version": "1.0.5",
   "main": "app.js",
   "scripts": {
