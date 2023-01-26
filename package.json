@@ -1,6 +1,6 @@
 {
   "name": "homey-socket.io",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "app.js",
   "scripts": {
     "git-commit": "git add -A && git push && git commit -m '-' && git push",
