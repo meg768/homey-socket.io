@@ -92,6 +92,8 @@ class MyApp extends Homey.App {
 			let device = this.devices[deviceID];
 			let capabilities = device.capabilitiesObj;
 
+            this.debug(JSON.stringify(device, null, 4));
+
 			for (let capabilityID in capabilities) {
 
 				if (capabilities.hasOwnProperty(capabilityID)) {
